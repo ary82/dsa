@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include <vector>
 class Solution {
 public:
@@ -12,5 +13,18 @@ public:
       }
     }
     return arr;
+  }
+
+  std::vector<int> twoSumHashMap(std::vector<int> &nums, int target) {
+    std::unordered_map<int, int> map;
+    int n = map.size();
+    for (int i = 0; i < n; i++) {
+      int diff = target - nums[i];
+      if (map.count(diff)) {
+        return {map[diff], i};
+      }
+      map[nums[i]] = i;
+    }
+    return {-1, -1};
   }
 };
